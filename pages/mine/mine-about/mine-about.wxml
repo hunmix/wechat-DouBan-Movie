@@ -1,0 +1,22 @@
+<!--pages/mine/mine-collection/mine-collection.wxml-->
+<view class="container">
+    <image class="logo" src="/images/ava/wageAva.jpg"></image>
+    <view class="content">
+        <text class="detail">这是一款为用户提供电影资讯查询的小程序，感谢大家的支持！\n</text>
+        <view class="contact">
+            <text>联系我：\n</text>
+            <view class="contact-message">
+                <text>邮箱：youarewang@126.com</text>
+                <text class="copy" catchtap="onCopyTap" data-message="youarewang@126.com">复制</text>
+            </view>
+            <view class="contact-message">
+                <text>电话：18016005155</text>
+                <text class="copy" catchtap="onCopyTap" data-message="18016005155">复制</text>
+            </view>
+        </view>
+        <view class="thanks">
+            <text>感谢zce提供的接口</text>
+            <text class="copy" catchtap="onCopyTap" data-message="https://github.com/zce">复制zce-github地址</text>
+        </view>
+    </view>
+</view>

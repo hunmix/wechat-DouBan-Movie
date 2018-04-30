@@ -1,0 +1,44 @@
+/* pages/mine/mine-collection/mine-collection.wxss */
+@import '../mine-collection-item/mine-collection-item-template.wxss';
+ page{
+    /* background:rgb(254, 252, 237); */
+    background:#f2f2f2;
+} 
+.item-container{
+    background:#f2f2f2;
+    margin-top: 5rpx;
+    overflow: hidden;
+    /* background:rgb(254, 252, 237); */
+    background:#f2f2f2;
+}
+.loading-container{
+    display: flex;
+    justify-content: center;
+}
+.loading{
+    margin-top: 20rpx;
+    width: 60rpx;
+    height: 60rpx;
+}
+.nothing-container{
+    position:fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.nothing-img{
+    width: 300rpx;
+    height: 200rpx;
+}
+.nothing{
+    text-align: center;
+    margin-top: 20rpx;
+    color: #333;
+    font-size: 35rpx;
+    letter-spacing: .3em;
+}

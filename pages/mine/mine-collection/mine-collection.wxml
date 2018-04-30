@@ -1,0 +1,14 @@
+<!--pages/mine/mine-collection/mine-collection.wxml-->
+<import src="../mine-collection-item/mine-collection-item-template.wxml" />
+<view wx:if="{{hasThing}}" class="nothing-container">
+     <image class="nothing-img" mode="aspectFit" src="/images/collection/nothing.png"></image> 
+    <text  class="nothing">暂时没有收藏</text>
+</view>
+<view class="item-container">
+    <block wx:for="{{articlesData}}" wx:item-for="item">
+        <template is="mineCollectionItemTemplate" data="{{...item}}"/>
+    </block>
+</view>
+<view class="loading-container">
+    <image wx:if="{{isLoading}}" class="loading" src="/images/loading/ali-loading.gif"></image>
+</view>

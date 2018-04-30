@@ -1,0 +1,81 @@
+/* pages/movies/movies.wxss */
+@import "movie-list/movie-list-template.wxss";
+@import "movie-grid/movie-grid-template.wxss";
+
+.container {
+    background: #f2f2f2;
+    text-align: center;
+    overflow: hidden;
+}
+
+.movie-template {
+    margin-bottom: 30rpx;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    background: #f9dd4f;
+}
+
+.search {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 60rpx;
+    width: 90%;
+    background-color: #f2f2f2;
+    border-radius: 30px;
+    margin-bottom: 15rpx;
+    margin-top: 15rpx;
+}
+
+.search-img {
+    margin-left: 30rpx;
+}
+
+.placeholder {
+    font-size: 14px;
+    color: #d1d1d1;
+    margin-left: 20rpx;
+}
+
+.search input {
+    height: 100%;
+    width: 100%;
+    margin-left: 20rpx;
+    font-size: 28rpx;
+    text-align: left;
+}
+
+.search-panel {
+    position: absolute;
+    top: 80rpx;
+    width: 100%;
+    text-align: center;
+}
+
+.cancel-img {
+    padding: 10rpx 20rpx;
+    margin-right: 20rpx;
+}
+
+.noMessage {
+    margin-top: 20rpx;
+    color: #666;
+}
+.isSearchLoading{
+    display: inline-block;
+    padding-top: 15rpx;
+    transform: translateY(-10rpx);
+    width: 40rpx;
+    height: 40rpx;
+}
+.loading {
+    display: inline-block;
+    padding-top: 25rpx;
+    transform: translateY(-10rpx);
+    width: 40rpx;
+    height: 40rpx;
+}

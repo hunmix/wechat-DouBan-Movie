@@ -1,0 +1,52 @@
+{
+    "pages": [
+        
+        "pages/welcome/welcome",
+        "pages/posts/post",
+        "pages/posts/post-detail/post-detail",
+        "pages/movies/movies",
+        "pages/movies/more-movie/more-movie",
+        "pages/movies/movie-detail/movie-detail",
+        "pages/mine/mine",
+        "pages/mine/mine-collection/mine-collection",
+        "pages/mine/mine-setting/mine-setting",
+        "pages/mine/mine-about/mine-about",
+        "pages/test/test"
+    ],
+    "window": {
+        "navigationBarBackgroundColor": "#f9dd4f",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "selectedColor": "#f9dd4f",
+        "borderStyle":"white",
+        "backgroundColor":"#000",
+        "color":"#fff",
+        "list": [
+            {
+                "pagePath": "pages/posts/post",
+                "text": "影评",
+                "iconPath": "/images/tab/read.png",
+                "selectedIconPath": "/images/tab/read_hl.png"
+            },
+            {
+                "pagePath": "pages/movies/movies",
+                "text": "电影",
+                "iconPath": "/images/tab/movie.png",
+                "selectedIconPath": "/images/tab/movie_hl.png"
+            },
+            {
+                "pagePath": "pages/mine/mine",
+                "text": "我的",
+                "iconPath": "/images/tab/mine.png",
+                "selectedIconPath": "/images/tab/mine_hl.png"
+            }
+        ]
+    },
+    "plugins": {
+        "wxparserPlugin": {
+            "version": "0.1.0",
+            "provider": "wx9d4d4ffa781ff3ac"
+        }
+    }
+}

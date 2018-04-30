@@ -1,0 +1,18 @@
+/* pages/movies/more-movie/more-movie.wxss */
+@import "../movie-grid/movie-grid-template.wxss";
+.container{
+    text-align: center;
+}
+.no-more{
+    display: inline-block;
+    padding-bottom:25rpx;
+    transform:translateY(-10rpx);
+    color: #666;
+}
+.loading{
+    display: inline-block;
+    padding-bottom:25rpx;
+    transform:translateY(-10rpx);
+    width: 40rpx;
+    height: 40rpx;
+}

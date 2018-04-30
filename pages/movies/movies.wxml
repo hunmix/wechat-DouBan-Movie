@@ -1,0 +1,30 @@
+<!--pages/movies/movies.wxml-->
+<import src="/pages/movies/movie-list/movie-list-template.wxml" />
+<import src="/pages/movies/movie-grid/movie-grid-template.wxml" />
+<view class="container">
+    <!-- <import src="../movie-grid/movie-grid-template.wxml" /> -->
+    <view class="search-container">
+        <view class="search">
+            <icon type="search" class="search-img" size="15" color="#405f80" />
+            <input type="text" placeholder="猩球崛起、宝莲灯" confirm-type="search" placeholder-class="placeholder" bindfocus="onBindFocus" bindconfirm="onBindConfirm" value="{{inputValue}}" />
+            <icon type="cancel" wx:if="{{searchPanelShow}}" size="18" color="#405f80" class="cancel-img" bindtap="onCancelImgTap" />
+        </view>
+    </view>
+    <view wx:if="{{containerShow && !inSearchPage}}">
+        <view class="movie-template">
+            <template is="movieListTemplate" data="{{...inTheater}}" />
+        </view>
+        <view class="movie-template">
+            <template is="movieListTemplate" data="{{...commingSoon}}" />
+        </view>
+        <view class="movie-template">
+            <template is="movieListTemplate" data="{{...top250}}" />
+        </view>
+    </view>
+    <view class="search-panel" wx:if="{{searchPanelShow}}">
+        <template class="temp" is="movieGridTemplate" data="{{...searchResult}}" />
+        <image wx:if="{{isSearchLoading}}" class="loading" src="/images/loading/ali-loading.gif"></image>
+        <text wx:if="{{searchResult.noData && !isSearchLoading}}" class="noMessage">搜索不到更多结果...</text>
+    </view>
+    <image wx:if="{{isLoading}}" class="loading" src="/images/loading/ali-loading.gif"></image>
+</view>

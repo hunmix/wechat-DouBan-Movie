@@ -1,0 +1,12 @@
+<template name="mineOptionTemplate">
+    <view class="row" catchtap="onDetailTap" data-title="{{title}}" data-url="{{url}}">
+        <view class="left-title">
+            <image class="icon" src="{{titleImg}}"></image>
+            <text class="title">{{title}}</text>
+        </view>
+        <image class="right-arrow" src="/images/mine/right-arrow.png"></image>
+    </view>
+    <view class="hr-container">
+        <view class="hr"></view>
+    </view>
+</template>

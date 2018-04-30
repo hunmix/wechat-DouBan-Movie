@@ -1,0 +1,35 @@
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 90rpx;
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+    background: #fff;
+}
+.left-title{
+    display: flex;
+    align-content: center;
+}
+.icon {
+    width: 36rpx;
+    height: 36rpx;
+    margin-right: 20rpx;
+}
+.title{
+    font-size: 26rpx;
+    color: #000;
+}
+.right-arrow {
+    width: 36rpx;
+    height: 36rpx;
+}
+.hr-container{
+    height: 1px;
+    background: #fff;
+}
+.hr{
+    height: 1px;
+    margin-left: 30rpx;
+    background: #ededed;
+}

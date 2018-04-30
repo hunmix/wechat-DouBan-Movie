@@ -1,0 +1,4 @@
+<!--pages/test/test.wxml-->
+<block wx:for="">
+    <wxparser rich-text="{{richText}}" />
+</block>

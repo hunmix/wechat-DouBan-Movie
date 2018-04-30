@@ -1,0 +1,118 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.head-image {
+    width: 100%;
+    height: 460rpx;
+}
+
+.audio {
+    width: 102rpx;
+    height: 110rpx;
+    position: absolute;
+    left: 50%;
+    top: 180rpx;
+    transform: translate(-50%);
+    opacity: 0.6;
+}
+
+.author-date {
+    flex-direction: row;
+    margin-left: 30rpx;
+    margin-top: 20rpx;
+}
+
+.avatar {
+    width: 64rpx;
+    height: 64rpx;
+    vertical-align: middle;
+    border-radius: 50%;
+}
+
+.author {
+    font-size: 30rpx;
+    font-weight: 300;
+    margin-left: 20rpx;
+    vertical-align: middle;
+    color: #666;
+}
+
+.const-text {
+    color: #999;
+    margin-left: 24rpx;
+}
+
+.date {
+    color: #999;
+    margin-left: 30rpx;
+    vertical-align: middle;
+}
+
+.title {
+    margin-left: 40rpx;
+    font-size: 36rpx;
+    font-weight: 700;
+    margin-top: 30rpx;
+    letter-spacing: 2px;
+    color: #4b556c;
+}
+
+.tool {
+    position: relative;
+    margin-top: 20rpx;
+}
+
+.circle-img {
+    float: right;
+    margin-right: 40rpx;
+    vertical-align: middle;
+}
+
+.circle-img image, .circle-img image button {
+    width: 90rpx;
+    height: 90rpx;
+    vertical-align: middle;
+}
+
+.share-btn {
+    display: inline-block;
+    line-height: 90rpx;
+    padding: 0;
+    margin-left: 30rpx;
+    border: red sloid 3px;
+    overflow: visible;
+    border-radius: 50%;
+}
+
+.share-btn image {
+    width: 90rpx;
+    height: 90rpx;
+    vertical-align: middle;
+}
+/* 取消button默认边框 */
+.share-btn::after {
+    border: none;
+}
+.share-btn:hover{
+    background:transparent;
+}
+.horizon {
+    width: 96%;
+    height: 1px;
+    background: #e5e5e5;
+    vertical-align: middle;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0 auto;
+    z-index: -99;
+}
+
+.detail {
+    color: #666;
+    margin: 20rpx 30rpx 0 30rpx;
+    line-height: 44rpx;
+    letter-spacing: 2px;
+}

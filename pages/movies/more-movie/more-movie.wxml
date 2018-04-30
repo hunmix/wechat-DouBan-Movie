@@ -1,0 +1,7 @@
+<!--pages/movies/more-movie/more-movie.wxml-->
+<import src="/pages/movies/movie-grid/movie-grid-template.wxml" />
+<view class="container">
+    <template is="movieGridTemplate" data="{{movies}}" />
+    <image wx:if="{{isLoading}}" class="loading" src="/images/loading/ali-loading.gif"></image>
+    <text wx:if="{{noMoreData}}" class="no-more">没有更多...</text>
+</view>

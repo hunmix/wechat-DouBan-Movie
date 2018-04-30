@@ -1,0 +1,13 @@
+<!--pages/mine/mine/mine.wxml-->
+<import src="/pages/mine/mine-option/mine-option-template.wxml" />
+<view class="container">
+    <view class="head">
+        <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
+        <text class="nick-name">{{userInfo.nickName}}</text>
+    </view>
+    <view class="body">
+        <block wx:for="{{settingOptions}}" wx:for-item="option">
+            <template is="mineOptionTemplate" data="{{...option}}"/>
+        </block>
+    </view>
+</view>

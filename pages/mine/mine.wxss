@@ -1,0 +1,33 @@
+/* pages/mine/mine/mine.wxss */
+@import "/pages/mine/mine-option/mine-option-template.wxss";
+.container{
+    height: 100vh;
+    background: #ededed;
+}
+.head{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 460rpx;
+    background: url("http://i2.bvimg.com/643320/7543093c64e0e1a4.jpg");
+}
+.bg-img{
+    width: 100%;
+    height: 100%;
+}
+.avatar{
+    width: 150rpx;
+    height: 150rpx;
+    border-radius: 50%;
+    border:1px solid rgba(0,0,0,.6);
+    box-shadow: 1 1 1px 3px rgba(0,0,0,.5);
+}
+.nick-name{
+    margin-top: 20rpx;
+    font-size: 40rpx;
+    color: #fff;
+}
+.body{
+    margin-top: 20rpx;
+}

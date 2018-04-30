@@ -1,0 +1,7 @@
+<view wx:if="{{hasInfo}}" class="container">
+  <image class="user-avatar" src="{{avatarUrl}}"></image>
+  <text class="user-name"><text>Hello</text>，{{nickName}}</text>
+  <view class="moto-container" bindtap="onTap">
+    <text class="moto">开始电影之旅</text>
+  </view>
+</view>
