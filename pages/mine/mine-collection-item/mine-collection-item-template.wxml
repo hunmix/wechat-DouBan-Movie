@@ -1,6 +1,6 @@
 <template name="mineCollectionItemTemplate">
     <view class="collection-item-container">
-        <view class="main-container" style="{{contentStyle}}" catchtap="onCollectionTap" catchtouchstart="onTouchStart" catchtouchmove="onTouchMove"   catchtouchend="onTouchEnd" data-article-id="{{id}}" data-index="{{index}}">
+        <view class="main-container" style="{{contentStyle}}" catchtap="onCollectionTap" bindtouchstart="onTouchStart" bindtouchmove="onTouchMove"   bindtouchend="onTouchEnd" data-article-id="{{id}}" data-index="{{index}}">
             <image class="img" mode="aspectFill" src="{{imgSrc}}"></image>
             <view class="content-container">
                 <text class="content">{{content}}</text>
