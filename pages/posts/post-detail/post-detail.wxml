@@ -19,4 +19,9 @@
         <view class="horizon"></view>
     </view>
     <text class="detail">{{articleData.detail}}</text>
+    <view class="like-btn" catchtap="onLikeBtnTap" data-has-like="{{articleData.hasLike}}" data-article-id="{{articleData.articleId}}">
+        <image wx:if="{{articleData.hasLike}}" style="{{articleData.likeStyle}}" class="flower" src="/images/icon/flower_hl.png"></image>
+        <image wx:else class="flower" src="/images/icon/flower.png"></image>
+        <text class="like-num">{{articleData.like}}</text>
+    </view>
 </view>

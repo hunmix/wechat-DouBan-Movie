@@ -3,30 +3,34 @@
     flex-direction: column;
     /* margin-top: 20rpx; */
     margin-bottom: 40rpx;
-    padding-bottom: 40rpx;
+    /* padding-bottom: 40rpx; */
     padding-top: 20rpx;
-    background:#fff;
+    background: #fff;
     border-radius: 10rpx;
 }
 
 .post-author-date {
+    display: flex;
+    align-items: center;
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-.post-author {
+.post-avatar {
     width: 60rpx;
     height: 60rpx;
     margin-left: 20rpx;
     border-radius: 50%;
-    vertical-align: middle;
 }
 
-.post-date {
+.post-author, .post-date {
     font-size: 30rpx;
     color: #666;
     margin-left: 20rpx;
-    vertical-align: middle;
+}
+
+.post-date {
+    font-size: 25rpx;
 }
 
 .post-title {
@@ -46,6 +50,7 @@
     color: #666;
     line-height: 40rpx;
     padding: 20rpx;
+    padding-bottom:0;
     letter-spacing: 2rpx;
 }
 
@@ -56,20 +61,33 @@
     align-items: center;
     font-size: 15rpx;
     margin-right: 30rpx;
+    height:100rpx;
+
 }
-.post-comment-image,
-.post-like-image {
+
+.post-comment-image, .post-like-image {
     height: 34rpx;
     width: 34rpx;
+    padding:10rpx;
     margin-left: 25rpx;
-    margin-right: 15rpx;
+    margin-right: 10rpx;
 }
-.post-comment-image{
-    transform:translateY(2rpx);
+
+.post-comment-image {
+    transform: translateY(2rpx);
 }
-.post-like-image{
-    transform:translateY(-1rpx);
+
+.post-like-image {
+    transform: translateY(-1rpx);
 }
+
 .post-like-font {
     font-size: 13px;
+}
+
+@keyframes click
+{
+    0%   {height: 34rpx;width: 34rpx;}
+    50%  {height: 40rpx;width: 40rpx;}
+    100% {height: 34rpx;width: 34rpx;}
 }

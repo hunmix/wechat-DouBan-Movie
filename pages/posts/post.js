@@ -7,6 +7,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        postData: {}
     },
 
     /**
@@ -19,11 +20,14 @@ Page({
         });
         var articleTableId = app.globalData.g_articleTableId;
         var articleTable = new wx.BaaS.TableObject(articleTableId);
+        
         articleTable.limit(10).offset(0).find().then(res => {
             var postData = util.progressArticleData(res);
             self.setData({
-                postkey: postData
+                postData: postData
             });
+            app.globalData.g_totalArticlesData = postData;
+            self.data.postData = postData;
             wx.hideLoading();
         })
     },
@@ -48,16 +52,23 @@ Page({
     //     return postData;
     // },
     onPostTap: function (e) {
-        var id = e.currentTarget.dataset.id;
+        var articleData = this.data.postData;
+        var index = e.currentTarget.dataset.index;
+        app.globalData.g_articleData = articleData[index];
         wx.navigateTo({
-            url: "post-detail/post-detail?id=" + id
+            url: "post-detail/post-detail?index="+index
         })
     },
-    // onSwiperTap: function (e) {
-    //     var postId = e.target.dataset.postId;
-    //     wx.navigateTo({
-    //         url: "post-detail/post-detail?id=" + postId
-    //     })
-    // },
-    
+    onLikeTap: function (event) {
+        var postData = util.onLikeEventTap(event)
+        this.setData({
+            postData: postData
+        })
+    },
+    onShow:function(){
+        var totalArticlesData = app.globalData.g_totalArticlesData;
+        this.setData({
+            postData: totalArticlesData
+        })
+    }
 })

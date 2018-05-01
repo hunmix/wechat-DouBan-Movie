@@ -1,69 +1,40 @@
 var app = getApp();
+var util = require('../../../utils/util.js');
 // var util = require('../../../utils/util.js');
 Page({
     data: {
-        isMusicPlay: false
+        isMusicPlay: false,
+        hasLike:false,
+        index:null
     },
     onLoad: function (option) {
         wx.showLoading({
             title: '加载中...',
         })
-        var articleId = option.id;
-        this.setArticleData(app.globalData.g_articleTableId, articleId);
+        this.data.index = option.index;
+        //读取post.js存储在app.js中的当前文章数据
+        var articleData = app.globalData.g_articleData;
+        var articleId = articleData.id;
+        //渲染详情页
+        this.setData({
+            articleData: articleData
+        })
+        wx.hideLoading();
         this.renderCollection(articleId);
-        // 根据缓存更新收藏按钮状态
-        // var isPostsCollected = wx.getStorageSync('isPostsCollected');
-        // if (typeof isPostsCollected[postId] == "boolean"){
-        //     var postCollected = isPostsCollected[postId];
-        //     this.setData({
-        //         collected: postCollected
-        //     })
-        // }else{
-        //     // var isPostsCollected = {};
-        //     isPostsCollected[postId] = false;
-        //     wx.setStorageSync("isPostsCollected", isPostsCollected)
-        // }
-        // this.setMusicMonitor();
     },
     // 渲染详情页
-    setArticleData: function (tableId, articleId) {
-        var self = this;
-        let articleTable = new wx.BaaS.TableObject(tableId)
-        articleTable.get(articleId).then(res => {
-            self.setData({
-                articleData: res.data
-            })
-            wx.hideLoading();
-        }, err => {
-            console.log('error')
-        })
-    },
-    // // 点击缓存更改状态
-    // // onCollectedTap:function(){
-    // //     var isPostsCollected = wx.getStorageSync("isPostsCollected");
-    // //     console.log(isPostsCollected)
-    // //     // 获取当前页面收藏按钮缓存
-    // //     var postCollected = isPostsCollected[this.data.postId];
-    // //     // 收藏状态切换
-    // //     postCollected = !postCollected;
-    // //     isPostsCollected[this.data.postId] = postCollected;
-    // //     console.log(isPostsCollected)
-    // //     // 设置缓存
-    // //     wx.setStorageSync("isPostsCollected", isPostsCollected);
-    // //     // 更新数据绑定变量，实现收藏图片状态切换
-    // //     this.setData({
-    // //         collected: postCollected
-    // //     })
-    // //     wx.showToast({
-    // //         title: postCollected ? "收藏成功":"取消成功",
-    // //         duration:800,
-    // //         icon:"success"
-    // //     })
-    // // },
-    onCollectedTap: function (event) {
-        var articleId = event.currentTarget.dataset.articleId;
-        this.upDateCollected(articleId)
-    },
+    // setArticleData: function (tableId, articleId) {
+    //     var self = this;
+    //     let articleTable = new wx.BaaS.TableObject(tableId)
+    //     articleTable.get(articleId).then(res => {
+    //         self.setData({
+    //             articleData: res.data
+    //         })
+    //         
+    //     }, err => {
+    //         console.log('error')
+    //     })
+    // },
     renderCollection: function (articleId) {
         var self = this;
         var tableId = app.globalData.g_articleCollectionTableId;
@@ -83,6 +54,10 @@ Page({
         }, err => {
             console.log('err:' + res)
         })
+    },
+    onCollectedTap: function (event) {
+        var articleId = event.currentTarget.dataset.articleId;
+        this.upDateCollected(articleId)
     },
     upDateCollected: function (articleId) {
         var self = this;
@@ -114,8 +89,7 @@ Page({
         var articleCollectionTable = new wx.BaaS.TableObject(tableId);
         var newRecord = articleCollectionTable.create();
         newRecord.set(data);
-        newRecord.save()
-        
+        newRecord.save();
         wx.showToast({
             title: '收藏成功',
             duration: 800
@@ -131,6 +105,21 @@ Page({
         wx.showToast({
             title: '取消成功',
             duration: 800
+        })
+    },
+    onLikeBtnTap:function(event){
+        var hasLike = event.currentTarget.dataset.hasLike;
+        var index = this.data.index;
+        var totalArticlesData = app.globalData.g_totalArticlesData;
+        totalArticlesData[index].hasLike = !hasLike;
+        var changeNum = !hasLike ? 1 : -1;
+        totalArticlesData[index].like += changeNum;
+        app.globalData.g_totalArticlesData = totalArticlesData;
+        console.log(app.globalData.g_totalArticlesData)
+        // 传入index
+        var articleData = util.onLikeEventTap(event, index);
+        this.setData({
+            articleData: articleData
         })
     }
     // onShareAppMessage:function(res){

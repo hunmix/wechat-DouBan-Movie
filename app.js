@@ -7,7 +7,10 @@ App({
         g_articleTableId: 34671,
         g_articleCollectionTableId: 34733,
         g_totalArticle:{},
-        g_collectedArticleId:null
+        g_collectedArticleId:null,
+        // 当前详情页面文章信息
+        g_articleData:null,
+        g_totalArticlesData:null
     },
     onLaunch() {
         // 引入 SDK
