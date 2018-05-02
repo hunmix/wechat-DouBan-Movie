@@ -1,8 +1,9 @@
 // pages/test/test.js
+var app = getApp();
 Page({
     data: {
         tableId: 34671,
-        userInfo:{}
+        userInfo: {}
     },
     onLoad: function (options) {
         // let contentGroupID = 1524909156796193
@@ -22,9 +23,14 @@ Page({
         // }, err => {
         //     // err
         // })
-        var Product = new wx.BaaS.TableObject(34671);
-        Product.limit(10).offset(0).find().then(res => {
+        var tableId = app.globalData.g_commentDetailTableId;
+        var Product = new wx.BaaS.TableObject(tableId);
+        var query = new wx.BaaS.Query();
+        console.log(tableId)
+        query.contains('articleId', '5ae48e5d2f6fc419ed17f13b')
+        Product.setQuery(query).find().then(res => {
             console.log(res)
         })
+        
     }
 })

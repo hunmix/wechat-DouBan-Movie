@@ -1,6 +1,7 @@
+<import src="../post-comment/post-comment-template.wxml" />
 <view class="container">
-     <image class="head-image" src="{{articleData.imgSrc}}"></image>
-     <!-- <image catchtap="onMusicTap" class="audio" src="{{isMusicPlay ? '../../../images/music/music-stop.png' : '../../../images/music/music-start.png'}}"></image>   -->
+    <image class="head-image" src="{{articleData.imgSrc}}"></image>
+    <!-- <image catchtap="onMusicTap" class="audio" src="{{isMusicPlay ? '../../../images/music/music-stop.png' : '../../../images/music/music-start.png'}}"></image>   -->
     <view class="author-date">
         <image class="avatar" src="{{articleData.avatar}}"></image>
         <text class="author">{{articleData.author}}</text>
@@ -23,5 +24,25 @@
         <image wx:if="{{articleData.hasLike}}" style="{{articleData.likeStyle}}" class="flower" src="/images/icon/flower_hl.png"></image>
         <image wx:else class="flower" src="/images/icon/flower.png"></image>
         <text class="like-num">{{articleData.like}}</text>
+    </view>
+    <view class="comment-container-all">
+        <view class="comment-container-head">
+            <view class="title-box">
+                <text class="comment-alltitle">评论：</text>
+            </view>
+            <view class="write-container" style="{{focus?'padding:20rpx 10rpx 10rpx 0;':'padding:0;padding-right:10rpx'}}">
+                <textarea class="textarea" bindinput="onInputTap" value="{{textValue}}" style="{{focus?'display:block;':'display:none;'}}" focus="{{focus}}" confirm-type="done" type="text" placeholder="请输入评论" maxlength="50" auto-height="true" show-confirm-bar="true"></textarea>
+                <button class="write-btn" bindtap="onWriteTap" data-article-id="{{articleData.id}}" form-type="submit">
+                    <image class="write-icon" src="/images/icon/write.png"></image>
+                    <text class="write-font">{{focus?'发表评论':'评\t论'}}</text>
+                </button>
+            </view>
+        </view>
+        <block wx:for="{{commentsData}}" wx:for-item="item" wx:for-index="commentIndex">
+            <template is="postCommentTmplate" data="{{...item,commentIndex}}" />
+        </block>
+        <view wx:if="{{noComment}}" class="noComment">
+            <text class="noMessage">暂时没有评论...</text>
+        </view>
     </view>
 </view>

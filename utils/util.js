@@ -72,11 +72,11 @@ function progressArticleData(res) {
     var data = res.data.objects;
     var postData = [];
     for (var index in data) {
-        console.log()
         var hasLike = getHasLike(index, data);
+        var date = transformDate(data[index].created_at);
         var info = {
             author: data[index].author,
-            comment: data[index].comment,
+            commentsNum: data[index].commentsNum,
             avatar: data[index].avatar,
             content: data[index].content,
             creator: data[index].created_by,
@@ -84,7 +84,8 @@ function progressArticleData(res) {
             id: data[index].id,
             imgSrc: data[index].imgSrc,
             like: data[index].hasLikeUsers.length,
-            date: data[index].date,
+            date: date,
+            articleId: data[index].articleId,
             hasLike: hasLike,
             likeStyle: ""
         }
@@ -177,6 +178,17 @@ function judgeLikeBtnStyle(hasLike) {
     return likeStyle;
 }
 // **************************************************************************************
+//时间转换
+function transformDate(date) {
+    var date = new Date(date * 1000);//如果date为10位不需要乘1000
+    var Y = date.getFullYear() + '-';
+    var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+    var D = (date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate()) + ' ';
+    var h = (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':';
+    var m = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':';
+    var s = (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds());
+    return Y + M + D + h + m + s;
+}
 module.exports = {
     toStarsArray: toStarsArray,
     http: http,
@@ -184,5 +196,6 @@ module.exports = {
     convertToCastInfos: convertToCastInfos,
     setNavigateTitle: setNavigateTitle,
     progressArticleData: progressArticleData,
-    onLikeEventTap: onLikeEventTap
+    onLikeEventTap: onLikeEventTap,
+    transformDate: transformDate
 }

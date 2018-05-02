@@ -67,6 +67,7 @@ Page({
     },
     onShow:function(){
         var totalArticlesData = app.globalData.g_totalArticlesData;
+        var commentsNum = app.globalData.g_commentsNum;
         this.setData({
             postData: totalArticlesData
         })

@@ -1,0 +1,18 @@
+<template name="postCommentTmplate">
+    <view class="comment-container">
+        <view class="head-container">
+            <view class="avatar-box">
+                <image class="comment-avatar" src="{{avatar}}"></image>
+                <text class="comment-author">{{author}}</text>
+            </view>
+            <text class="floor">{{commentIndex+1}}楼</text>
+        </view>
+        <view class="body-container">
+            <text class="comment">{{commentDetail}}</text>
+        </view>
+        <view class="footer-container">
+            <text class="comment-date">{{date}}</text>
+            <text wx:if="{{canDelete}}" catchtap="onDeleteTap" data-article-id="{{articleId}}" data-_id="{{_id}}" class="delete-btn">删除</text>
+        </view>
+    </view>
+</template>

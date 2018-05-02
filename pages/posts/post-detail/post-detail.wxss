@@ -1,6 +1,8 @@
+@import "../post-comment/post-comment-template.wxss";
 .container {
     display: flex;
     flex-direction: column;
+    padding-bottom: 80rpx;
 }
 
 .head-image {
@@ -114,7 +116,7 @@
     color: #666;
     margin: 20rpx 30rpx 0 30rpx;
     line-height: 44rpx;
-    font-size: 25rpx;
+    font-size: 28rpx;
     letter-spacing: 2px;
 }
 .like-btn{
@@ -127,8 +129,8 @@
     height: 100rpx;
     border-radius:50%;
     background:#eee;
-    margin-top: 45rpx;
-    margin-bottom: 45rpx;
+    margin-top: 95rpx;
+    margin-bottom: 65rpx;
 }
 
 .flower{
@@ -140,6 +142,7 @@
     position: absolute;
     bottom:-35rpx;
     left: 50%;
+    color: #333;
     transform:translateX(-50%);
 }
 @keyframes click
@@ -147,4 +150,84 @@
     0%   {height: 70rpx;width: 70rpx;}
     50%  {height: 90rpx;width: 90rpx;}
     100% {height: 80rpx;width: 80rpx;}
+}
+.comment-container-all{
+    margin-top: 20rpx;
+    background:#fff;
+}
+.comment-container-head{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20rpx;
+}
+.comment-alltitle{
+    padding-left: 30rpx;
+    font-size: 30rpx;
+    color: #333;
+}
+.title-box{
+    display: flex;
+    justify-content: space-between;
+    margin-top:15rpx;
+    align-items:flex-start;
+
+}
+.write-container{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items:flex-end;
+
+    padding:20rpx 10rpx 10rpx 0;
+    transition: all .5s ease;
+}
+.write-btn{
+    box-sizing: content-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:0;
+    width: 170rpx;
+    height: 60rpx;
+    background:#1bbd19;
+    border-color: #1bbd19;
+    padding-left: 10rpx;
+    padding-right: 10rpx;
+    transition: all .5s ease;
+}
+.button-hover{
+    background:#1aad19;
+}
+.write-icon{
+    width: 40rpx;
+    height: 40rpx;
+    margin-right: 12rpx;
+}
+.write-font{
+    color: #fff;
+    transition: all .5s ease;
+}
+.textarea{
+    display: none;
+    padding:1rpx;
+    padding-left: 15rpx;
+    border:1px solid #999;
+    border-radius: 10rpx;
+     /* margin:20rpx 10rpx 20rpx 120rpx;  */
+    font-size: 26rpx;
+    margin-bottom: 20rpx;
+}
+.textarea-placeholder{
+    font-size: 26rpx;
+}
+.noComment{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120rpx;
+    border-top: 1px solid #ccc;
+}
+.noMessage{
+    color: #ccc;
+    font-size: 28rpx;
 }

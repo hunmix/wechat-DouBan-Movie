@@ -1,0 +1,72 @@
+.comment-container{
+    display: flex;
+    flex-direction: column;
+    padding:10rpx;
+    margin-bottom: 20rpx;
+    border-radius: 45rpx;
+    overflow: hidden;
+}
+.head-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10rpx;
+    padding-top: 10rpx;
+    padding-left: 10rpx;
+    background:rgba(240, 240, 240, .5);
+}
+.avatar-box{
+    display: flex;
+    align-items: center;
+}
+.comment-avatar{
+    border-radius: 50%;
+    width: 60rpx;
+    height: 60rpx;
+    margin-right: 20rpx;
+}
+.comment-author{
+    font-size: 24rpx;
+    color: #666;
+    font-size: 26rpx;
+}
+.body-container{
+    box-sizing: border-box;
+    padding-left: 50rpx;
+    background:rgba(240, 240, 240, .5);
+}
+.floor{
+    margin-right: 20rpx;
+    font-size: 30rpx;
+    letter-spacing: .2em;
+}
+.comment{
+    display: inline-block;
+    line-height: 35rpx;
+    color: #333;
+    font-size: 26rpx;
+}
+.footer-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10rpx;
+    width: 100%;
+    background:rgba(240, 240, 240, .5);
+    /* border-bottom: 1px solid #ccc; */
+    box-shadow: 0 2px 1px rgba(20, 20,20, .1)
+}
+.comment-date{
+    display: block;
+    margin-left: 50rpx;
+    margin-right: 20rpx;
+    padding-bottom:10rpx;
+    color: #666;
+    font-size:23rpx;
+}
+.delete-btn{
+    text-decoration: underline;
+    color: #666;
+    font-size: 28rpx;
+    margin-right: 20rpx;
+}

@@ -12,7 +12,7 @@
             <image class="post-like-image" style="{{likeStyle}}" catchtap="onLikeTap" data-index="{{index}}" data-has-like="{{hasLike}}" src="{{hasLike?'/images/icon/like_hl.png':'/images/icon/like.png'}}"></image>
             <text class="post-like-font">{{like}}</text>
             <image class="post-comment-image" src="/images/icon/comment.png"></image>
-            <text class="post-like-font">{{comment}}</text>
+            <text class="post-like-font">{{commentsNum}}</text>
         </view>
     </view> 
 </template> 

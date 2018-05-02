@@ -1,4 +1,4 @@
 <!--pages/test/test.wxml-->
-<block wx:for="">
-    <wxparser rich-text="{{richText}}" />
-</block>
+<text>{{commentDetail}}</text>
+<text>{{date}}</text>
+<text>{{articleId}}</text>

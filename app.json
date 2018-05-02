@@ -12,6 +12,7 @@
         "pages/mine/mine-setting/mine-setting",
         "pages/mine/mine-about/mine-about",
         "pages/test/test"
+        
     ],
     "window": {
         "navigationBarBackgroundColor": "#f9dd4f",
