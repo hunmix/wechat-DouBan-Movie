@@ -174,12 +174,19 @@ Page({
             articleData: articleData
         })
     },
+    onCancelTap:function(){
+        this.setData({
+            focus: false,
+            textValue: ""
+        })
+    },
     onWriteTap: function (event) {
         var articleId = event.currentTarget.dataset.articleId;
-        console.log()
-        var commentValue = this.data.commentValue || 1;
+        var commentValue = this.data.commentValue || " ";
         var focus = this.data.focus;
+        console.log(focus)
         if (focus == true) {
+            console.log(focus, commentValue)
             if (commentValue.length < 6) {
                 wx.showToast({
                     title: '输入字数不能小于5位',
@@ -200,7 +207,7 @@ Page({
         this.setData({
             focus: !focus,
             textValue: "",
-            noComment:false
+            noComment: false
         })
     },
     setCommentValueInDatabase: function (commentValue, articleId) {

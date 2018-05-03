@@ -31,11 +31,17 @@
                 <text class="comment-alltitle">评论：</text>
             </view>
             <view class="write-container" style="{{focus?'padding:20rpx 10rpx 10rpx 0;':'padding:0;padding-right:10rpx'}}">
-                <textarea class="textarea" bindinput="onInputTap" value="{{textValue}}" style="{{focus?'display:block;':'display:none;'}}" focus="{{focus}}" confirm-type="done" type="text" placeholder="请输入评论" maxlength="50" auto-height="true" show-confirm-bar="true"></textarea>
-                <button class="write-btn" bindtap="onWriteTap" data-article-id="{{articleData.id}}" form-type="submit">
-                    <image class="write-icon" src="/images/icon/write.png"></image>
-                    <text class="write-font">{{focus?'发表评论':'评\t论'}}</text>
-                </button>
+                <textarea class="textarea" bindinput="onInputTap" value="{{textValue}}" style="{{focus?'display:block;':'display:none;'}}" focus="{{focus}}" cursor-spacing="60" confirm-type="done" type="text" placeholder="请输入评论" maxlength="50" auto-height="true" show-confirm-bar="true"></textarea>
+                <view class="btn-container">
+                    <button class="cancel-btn" catchtap="onCancelTap" style="{{focus?'display:flex':'display:none'}}">
+                        <text>取消</text>
+                    </button>
+                    <button class="write-btn" bindtap="onWriteTap" data-article-id="{{articleData.id}}" form-type="submit">
+                        <image class="write-icon" src="/images/icon/write.png"></image>
+                        <!-- <text class="write-font">取消</text> -->
+                        <text class="write-font">{{focus?'发表评论':'评\t论'}}</text>
+                    </button>
+                </view>
             </view>
         </view>
         <block wx:for="{{commentsData}}" wx:for-item="item" wx:for-index="commentIndex">
