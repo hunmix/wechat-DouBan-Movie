@@ -17,12 +17,37 @@ Page({
         this.data.index = option.index;
         //读取post.js存储在app.js中的当前文章数据
         var articleData = app.globalData.g_articleData;
-        var articleId = articleData.id;
-        this.setCommnetsData(articleId, articleData);
+        // post页面跳转
+        if (articleData) {
+            var articleId = articleData.id;
+            this.setCommnetsData(articleId, articleData);
+        } else {
+            // myCollection页面跳转
+            articleId = option.articleId;
+            // 异步获取articleId，所以将setCommnetsData
+            this.getArticleData(articleId);
+        }
         wx.hideLoading();
         this.renderCollection(articleId);
     },
+    getArticleData: function (articleId) {
+        var self = this;
+        var tableId = app.globalData.g_articleTableId;
+        let query = new wx.BaaS.Query()
+        let articleTable = new wx.BaaS.TableObject(tableId)
+        query.contains('articleId', articleId)
+        articleTable.setQuery(query).find().then(res => {
+            var articleData=util.progressArticleData(res);
+            // ****************************************
+            app.globalData.g_articleData = articleData[0];
+            //设置ommnetsData
+            self.setCommnetsData(articleId, articleData[0]);
+        }, err => {
+            // err
+        })
+    },
     setCommnetsData: function (articleId, articleData) {
+        console.log(articleData)
         var self = this;
         var tableId = app.globalData.g_commentDetailTableId;
         var commnetsData = new wx.BaaS.TableObject(tableId);
@@ -110,11 +135,11 @@ Page({
     },
     onCollectedTap: function (event) {
         var articleId = event.currentTarget.dataset.articleId;
-        this.upDateCollected(articleId)
     },
     upDateCollected: function (articleId) {
         var self = this;
         var tableId = app.globalData.g_articleCollectionTableId;
+        
         var articleCollectionTable = new wx.BaaS.TableObject(tableId);
         var query = new wx.BaaS.Query();
         query.contains('articleId', articleId);
@@ -161,9 +186,14 @@ Page({
         })
     },
     onLikeBtnTap: function (event) {
+        var articleId = event.currentTarget.dataset.articleId;
         var hasLike = event.currentTarget.dataset.hasLike;
-        var index = this.data.index;
         var totalArticlesData = app.globalData.g_totalArticlesData;
+        if (this.data.index){
+            var index = this.data.index;
+        }else{
+            var index = this.getArticleIndexInTotalData(totalArticlesData, articleId);
+        }
         totalArticlesData[index].hasLike = !hasLike;
         var changeNum = !hasLike ? 1 : -1;
         totalArticlesData[index].like += changeNum;
@@ -174,7 +204,14 @@ Page({
             articleData: articleData
         })
     },
-    onCancelTap:function(){
+    getArticleIndexInTotalData: function (totalArticlesData,articleId){
+        for (var index in totalArticlesData){
+            if (totalArticlesData[index].articleId == articleId){
+                return index;
+            }
+        }
+    },
+    onCancelTap: function () {
         this.setData({
             focus: false,
             textValue: ""
@@ -243,9 +280,9 @@ Page({
             var commentsData = self.progressCommnetsData(res, articleId);
             //更新post页面的评论数量
             self.refreshPostCommnetsNum(commentsData.length);
-            if (commentsData.length == 0){
+            if (commentsData.length == 0) {
                 var noComment = true
-            }else{
+            } else {
                 var noComment = false
             }
             //渲染详情页
@@ -261,11 +298,11 @@ Page({
             })
             wx.hideLoading();
             //更新post页面的评论数量
-            
+
         })
     },
     // 删除按钮
-    onDeleteTap:function(event){
+    onDeleteTap: function (event) {
         var self = this;
         var articleId = event.currentTarget.dataset.articleId;
         console.log(articleId)
@@ -291,13 +328,13 @@ Page({
             }
         })
     },
-    refreshPostCommnetsNum: function (commentsNum = 0){
+    refreshPostCommnetsNum: function (commentsNum = 0) {
         var totalArticlesData = app.globalData.g_totalArticlesData;
         var index = this.data.index;
         totalArticlesData[index].commentsNum = commentsNum;
         app.globalData.totalArticlesData = totalArticlesData;
     },
-    sendCommentsNumInDatabase:function(num=0,articleId){
+    sendCommentsNumInDatabase: function (num = 0, articleId) {
         let tableId = app.globalData.g_articleTableId;
         let commentDataTable = new wx.BaaS.TableObject(tableId)
         let commentData = commentDataTable.getWithoutData(articleId)

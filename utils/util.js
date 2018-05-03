@@ -113,6 +113,7 @@ function onLikeEventTap(event, tempIndex) {
     // detail页面没有index，需要传进来
     if (tempIndex) {
         var index = 0;
+        // 当前文章信息
         var postData = app.globalData.g_articleData;
         var articleId = postData.id;
         postData.hasLike = hasLike;
