@@ -1,0 +1,9 @@
+.cast-img {
+    width: 170rpx;
+    height: 210rpx;
+}
+
+.cast-name {
+    margin: 10rpx auto 0;
+    word-break: break-all;
+}

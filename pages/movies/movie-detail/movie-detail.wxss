@@ -1,6 +1,7 @@
 /* pages/movies/movie-detail/movie-detail.wxss */
 @import "../stars/stars-template.wxss";
-
+@import "../cast-img/cast-img-template.wxss";
+@import "../photo/photo-template.wxss";
 .container {
     display: flex;
     flex-direction: column;
@@ -161,13 +162,9 @@
     flex-wrap: nowrap;
     white-space: nowrap;
 }
-
-.cast-img {
-    width: 170rpx;
-    height: 210rpx;
-}
-
-.cast-name {
-    margin: 10rpx auto 0;
-    word-break: break-all;
+.photos-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    white-space: nowrap;
 }

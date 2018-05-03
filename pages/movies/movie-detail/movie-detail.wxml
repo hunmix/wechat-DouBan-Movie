@@ -1,4 +1,6 @@
 <!--pages/movies/movie-detail/movie-detail.wxml-->
+<import src="../photo/photo-template.wxml" />
+<import src="../cast-img/cast-img-template.wxml" />
 <import src="../stars/stars-template.wxml" />
 <view class="container">
     <image class="head-img" src="{{movieImg}}" mode="aspectFill"></image>
@@ -19,7 +21,7 @@
         </view>
         <view class="flex-row">
             <text class="mark">评分</text>
-            <template is="starsTemplate" data="{{stars:stars, score:score}}"/>
+            <template is="starsTemplate" data="{{stars:stars, score:score}}" />
         </view>
         <view class="flex-row">
             <text class="mark">导演</text>
@@ -39,16 +41,24 @@
         <text>剧情简介</text>
         <text class="summary-content">{{summary}}</text>
     </view>
+    <!--******************  -->
+    <view class="hr"></view>
+    <view class="cast">
+        <text class="cast-font">相关照片</text>
+        <scroll-view class="photos-container" scroll-x="true">
+            <block wx:for="{{photosInfo}}" wx:fot-item="item">
+                <template is="photoTemplate" data="{{item,photosInfo}}" />
+            </block>
+        </scroll-view>
+    </view>
     <view class="hr"></view>
     <view class="cast">
         <text class="cast-font">影人</text>
         <scroll-view class="cast-imgs" scroll-x="true">
             <block wx:for="{{castsInfo}}" wx:for-item="item">
-                <view class="cast-container">
-                    <image class="cast-img" src="{{item.img}}" data-src="{{item.img}}" data-urls="{{item.urls}}" catchtap="onViewImg"></image>
-                    <text class="cast-name">{{item.name}}</text>
-                </view>
+                <template is="castImgTemplate" data="{{item}}" />
             </block>
         </scroll-view>
     </view>
+    
 </view>

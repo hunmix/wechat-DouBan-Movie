@@ -1,0 +1,6 @@
+<template name="castImgTemplate">
+    <view class="cast-container">
+        <image class="cast-img" src="{{item.img}}" data-src="{{item.img}}" data-urls="{{item.urls}}" catchtap="onViewImg"></image>
+        <text class="cast-name">{{item.name}}</text>
+    </view>
+</template>

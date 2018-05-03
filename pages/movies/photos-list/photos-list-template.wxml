@@ -1,0 +1,4 @@
+<import src="../photo/photo-template.wxml" />
+<template name="photosListTemplate">
+    
+</template>

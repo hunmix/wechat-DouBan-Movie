@@ -3,7 +3,10 @@ var util = require('../../../utils/util.js');
 var app = getApp();
 Page({
     data: {
-
+        photos: [
+            'https://img3.doubanio.com/view/photo/photo/public/p2518979161.jpg',
+            'https://img3.doubanio.com/view/photo/photo/public/p2518910452.jpg'
+        ]
     },
     onLoad: function (options) {
         wx.showLoading({
@@ -30,6 +33,10 @@ Page({
             director.name = data.directors[0].name;
             director.id = data.directors[0].id;
         }
+        var photosInfo = [];
+        for (var index in data.photos) {
+            photosInfo.push(data.photos[index].image);
+        }
         var movie = {
             movieImg: data.images ? data.images.large : "",
             country: data.countries[0],
@@ -44,7 +51,8 @@ Page({
             director: director,
             casts: util.convertToCastString(data.casts),
             castsInfo: util.convertToCastInfos(data.casts),
-            summary: data.summary
+            summary: data.summary,
+            photosInfo: photosInfo
         }
         this.setData(movie)
         wx.hideLoading();
