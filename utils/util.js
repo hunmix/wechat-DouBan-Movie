@@ -87,7 +87,8 @@ function progressArticleData(res) {
             date: date,
             articleId: data[index].articleId,
             hasLike: hasLike,
-            likeStyle: ""
+            likeStyle: "",
+            title: data[index].title
         }
         postData.push(info);
     }

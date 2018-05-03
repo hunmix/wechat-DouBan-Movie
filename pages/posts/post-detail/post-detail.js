@@ -47,7 +47,6 @@ Page({
         })
     },
     setCommnetsData: function (articleId, articleData) {
-        console.log(articleData)
         var self = this;
         var tableId = app.globalData.g_commentDetailTableId;
         var commnetsData = new wx.BaaS.TableObject(tableId);
@@ -135,11 +134,11 @@ Page({
     },
     onCollectedTap: function (event) {
         var articleId = event.currentTarget.dataset.articleId;
+        this.upDateCollected(articleId);
     },
     upDateCollected: function (articleId) {
         var self = this;
         var tableId = app.globalData.g_articleCollectionTableId;
-        
         var articleCollectionTable = new wx.BaaS.TableObject(tableId);
         var query = new wx.BaaS.Query();
         query.contains('articleId', articleId);
