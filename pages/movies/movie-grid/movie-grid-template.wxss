@@ -1,7 +1,7 @@
 @import "../movie/movie-template.wxss";
 .single-view-container{
     float: left;
-    margin-bottom: 30rpx;
+    /* margin-bottom: 30rpx; */
 }
 .movie-grid-container{
     margin:40rpx auto auto 10rpx; 

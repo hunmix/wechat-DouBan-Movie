@@ -1,5 +1,7 @@
 <!--pages/mine/mine-collection/mine-collection.wxml-->
 <import src="../mine-collection-item/mine-collection-item-template.wxml" />
+<import src="../../../template/loading-template/loading-template.wxml" />
+<template is="loadingTemplate" data="{{isLoading}}"/>
 <view wx:if="{{noThing}}" class="nothing-container">
      <image class="nothing-img" mode="aspectFit" src="/images/collection/nothing.png"></image> 
     <text  class="nothing">暂时没有收藏</text>
@@ -8,7 +10,4 @@
     <block wx:for="{{articlesData}}" wx:item-for="item">
         <template is="mineCollectionItemTemplate" data="{{...item,index}}"/>
     </block>
-</view>
-<view class="loading-container">
-    <image wx:if="{{isLoading}}" class="loading" src="/images/loading/ali-loading.gif"></image>
 </view>

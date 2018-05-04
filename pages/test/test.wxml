@@ -1,4 +1,2 @@
 <!--pages/test/test.wxml-->
-<text>{{commentDetail}}</text>
-<text>{{date}}</text>
-<text>{{articleId}}</text>
+<wxparser rich-text='<p><span style="text-decoration: line-through;"> 刘莹莹 傻逼啊！！！</span></p> <p><span style="text-decoration: line-through;" > 刘莹莹 傻逼啊！！！</span></p>' />

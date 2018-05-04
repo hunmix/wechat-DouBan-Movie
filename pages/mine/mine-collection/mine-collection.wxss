@@ -1,5 +1,6 @@
 /* pages/mine/mine-collection/mine-collection.wxss */
 @import '../mine-collection-item/mine-collection-item-template.wxss';
+@import "../../../template/loading-template/loading-template.wxss";
  page{
     /* background:rgb(254, 252, 237); */
     background:#f2f2f2;
@@ -11,15 +12,16 @@
     /* background:rgb(254, 252, 237); */
     background:#f2f2f2;
 }
-.loading-container{
+/* .loading-container{
     display: flex;
     justify-content: center;
+    margin-top: 10rpx;
 }
 .loading{
     margin-top: 20rpx;
     width: 60rpx;
     height: 60rpx;
-}
+} */
 .nothing-container{
     position:fixed;
     top: 0;

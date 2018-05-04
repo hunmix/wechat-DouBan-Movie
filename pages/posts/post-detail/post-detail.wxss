@@ -1,4 +1,5 @@
 @import "../post-comment/post-comment-template.wxss";
+@import "../../../template/loading-template/loading-template.wxss";
 .container {
     display: flex;
     flex-direction: column;

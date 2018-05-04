@@ -1,3 +1,6 @@
 {
-    "navigationBarTitleText": "阅读"
+    "navigationBarTitleText": "阅读",
+    "usingComponents": {
+        "wxparser": "plugin://wxparserPlugin/wxparser"
+    }
 }

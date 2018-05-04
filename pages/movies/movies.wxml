@@ -1,6 +1,7 @@
 <!--pages/movies/movies.wxml-->
 <import src="/pages/movies/movie-list/movie-list-template.wxml" />
 <import src="/pages/movies/movie-grid/movie-grid-template.wxml" />
+<import src="../../template/loading-template/loading-template.wxml" />
 <view class="container">
     <!-- <import src="../movie-grid/movie-grid-template.wxml" /> -->
     <view class="search-container">
@@ -26,5 +27,6 @@
         <image wx:if="{{isSearchLoading}}" class="loading" src="/images/loading/ali-loading.gif"></image>
         <text wx:if="{{searchResult.noData && !isSearchLoading}}" class="noMessage">搜索不到更多结果...</text>
     </view>
-    <image wx:if="{{isLoading}}" class="loading" src="/images/loading/ali-loading.gif"></image>
+    <!-- <image wx:if="{{isLoading}}" class="loading" src="/images/loading/ali-loading.gif"></image> -->
+    <template is="loadingTemplate" data="{{isLoading}}"/>
 </view>

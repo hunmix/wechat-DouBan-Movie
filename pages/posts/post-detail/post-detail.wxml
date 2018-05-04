@@ -1,5 +1,7 @@
 <import src="../post-comment/post-comment-template.wxml" />
+<import src="../../../template/loading-template/loading-template.wxml" />
 <view class="container">
+    <template is="loadingTemplate" data="{{isLoading}}"/>
     <image class="head-image" src="{{articleData.imgSrc}}"></image>
     <!-- <image catchtap="onMusicTap" class="audio" src="{{isMusicPlay ? '../../../images/music/music-stop.png' : '../../../images/music/music-start.png'}}"></image>   -->
     <view class="author-date">
@@ -19,7 +21,8 @@
         </view>
         <view class="horizon"></view>
     </view>
-    <text class="detail">{{articleData.detail}}</text>
+    <!-- <text class="detail">{{articleData.detail}}</text>  -->
+    <wxparser class="detail" rich-text="{{articleData.detail}}" />
     <view class="like-btn" catchtap="onLikeBtnTap" data-has-like="{{articleData.hasLike}}" data-article-id="{{articleData.articleId}}">
         <image wx:if="{{articleData.hasLike}}" style="{{articleData.likeStyle}}" class="flower" src="/images/icon/flower_hl.png"></image>
         <image wx:else class="flower" src="/images/icon/flower.png"></image>

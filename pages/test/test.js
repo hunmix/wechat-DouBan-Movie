@@ -23,14 +23,9 @@ Page({
         // }, err => {
         //     // err
         // })
-        var tableId = app.globalData.g_commentDetailTableId;
-        var Product = new wx.BaaS.TableObject(tableId);
-        var query = new wx.BaaS.Query();
-        console.log(tableId)
-        query.contains('articleId', '5ae48e5d2f6fc419ed17f13b')
-        Product.setQuery(query).find().then(res => {
-            console.log(res)
-        })
-        
+        // var str = '<p><span style="text-decoration: line-through;"> 刘莹莹 傻逼啊！！！</span></p> <p><span style="text-decoration: line-through;" > 刘莹莹 傻逼啊！！！</span></p>';
+        // this.setData({
+        //     richText:str
+        // })
     }
 })

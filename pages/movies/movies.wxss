@@ -1,6 +1,7 @@
 /* pages/movies/movies.wxss */
 @import "movie-list/movie-list-template.wxss";
 @import "movie-grid/movie-grid-template.wxss";
+@import "../../template/loading-template/loading-template.wxss";
 .container {
     background: #f2f2f2;
     text-align: center;
@@ -68,13 +69,13 @@
     display: inline-block;
     padding-top: 15rpx;
     transform: translateY(-10rpx);
-    width: 40rpx;
-    height: 40rpx;
+    width: 60rpx;
+    height: 60rpx;
 }
-.loading {
+/* .loading {
     display: inline-block;
     padding-top: 25rpx;
     transform: translateY(-10rpx);
-    width: 40rpx;
-    height: 40rpx;
-}
+    width: 60rpx;
+    height: 60rpx;
+} */

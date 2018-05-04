@@ -8,26 +8,26 @@ Page({
         index: null,
         focus: false,
         noComment: false,
-        textValue: ""
+        textValue: "",
+        isLoading:true
     },
     onLoad: function (option) {
-        wx.showLoading({
-            title: '加载中...',
-        })
+        // wx.showLoading({
+        //     title: '加载中...',
+        // })
         this.data.index = option.index;
         //读取post.js存储在app.js中的当前文章数据
         var articleData = app.globalData.g_articleData;
         // post页面跳转
-        if (articleData) {
-            var articleId = articleData.id;
-            this.setCommnetsData(articleId, articleData);
-        } else {
+        if (articleId = option.articleId) {
             // myCollection页面跳转
             articleId = option.articleId;
             // 异步获取articleId，所以将setCommnetsData
             this.getArticleData(articleId);
+        } else {
+            var articleId = articleData.id;
+            this.setCommnetsData(articleId, articleData);
         }
-        wx.hideLoading();
         this.renderCollection(articleId);
     },
     getArticleData: function (articleId) {
@@ -61,15 +61,17 @@ Page({
                 this.setData({
                     articleData: articleData,
                     commentsData: commentsData,
-                    noComment: false
+                    noComment: false,
+                    isLoading:false
                 })
             } else {
                 this.setData({
                     articleData: articleData,
-                    noComment: true
+                    noComment: true,
+                    isLoading: false
                 })
             }
-
+            // wx.hideLoading();
         }, err => {
             // err
         })
