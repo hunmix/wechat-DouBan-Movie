@@ -9,12 +9,20 @@ Page({
         focus: false,
         noComment: false,
         textValue: "",
-        isLoading:true
+        isLoading:true,
+        option:null
     },
     onLoad: function (option) {
         // wx.showLoading({
         //     title: '加载中...',
         // })
+        this.setData({
+            option: option
+        })
+        this.setPostDetailData(option);
+    },
+    setPostDetailData: function (option){
+        wx.showNavigationBarLoading();
         this.data.index = option.index;
         //读取post.js存储在app.js中的当前文章数据
         var articleData = app.globalData.g_articleData;
@@ -71,6 +79,8 @@ Page({
                     isLoading: false
                 })
             }
+            wx.stopPullDownRefresh();
+            wx.hideNavigationBarLoading();
             // wx.hideLoading();
         }, err => {
             // err
@@ -195,11 +205,7 @@ Page({
         }else{
             var index = this.getArticleIndexInTotalData(totalArticlesData, articleId);
         }
-        totalArticlesData[index].hasLike = !hasLike;
-        var changeNum = !hasLike ? 1 : -1;
-        totalArticlesData[index].like += changeNum;
-        app.globalData.g_totalArticlesData = totalArticlesData;
-        // 传入index
+        //获取当前文章数据
         var articleData = util.onLikeEventTap(event, index);
         this.setData({
             articleData: articleData
@@ -345,6 +351,10 @@ Page({
         }, err => {
             console.log(res)
         })
+    },
+    onPullDownRefresh:function(option){
+        option = this.data.option;
+        this.setPostDetailData(option);
     }
     // onShareAppMessage:function(res){
     //     return{

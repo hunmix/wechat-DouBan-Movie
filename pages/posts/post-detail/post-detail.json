@@ -2,5 +2,6 @@
     "navigationBarTitleText": "阅读",
     "usingComponents": {
         "wxparser": "plugin://wxparserPlugin/wxparser"
-    }
+    },
+    "enablePullDownRefresh": true
 }

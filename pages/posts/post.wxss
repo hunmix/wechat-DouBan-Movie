@@ -1,11 +1,15 @@
 /* pages/posts/post.wxss */
 @import "post-item/post-item-template.wxss";
+@import "../../template/loading-template/loading-template.wxss";
 /* swiper{
     width:100%;
     height:450rpx;
 } */
-.container{
+page{
     background:#f2f2f2;
+}
+.container{
+    /* background:#fff; */
 }
 swiper image{
     width:100%;

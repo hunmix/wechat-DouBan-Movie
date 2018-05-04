@@ -7,28 +7,45 @@ Page({
      * 页面的初始数据
      */
     data: {
-        postData: {}
+        postData: {},
+        isLoading:true
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        this.setData({
+            isLoading: true
+        })
+        this.setPostData();
+        // var articleTable = new wx.BaaS.TableObject(articleTableId);
+        // articleTable.limit(10).offset(0).find().then(res => {
+        //     var postData = util.progressArticleData(res);
+        //     self.setData({
+        //         postData: postData,
+        //         isLoading: false
+        //     });
+        //     app.globalData.g_totalArticlesData = postData;
+        //     self.data.postData = postData;
+        // })
+    },
+    setPostData: function () {
+        wx.showNavigationBarLoading();
         var self = this;
-        wx.showLoading({
-            title: '加载中',
-        });
         var articleTableId = app.globalData.g_articleTableId;
         var articleTable = new wx.BaaS.TableObject(articleTableId);
-        
         articleTable.limit(10).offset(0).find().then(res => {
             var postData = util.progressArticleData(res);
             self.setData({
-                postData: postData
+                postData: postData,
+                isLoading:false
             });
             app.globalData.g_totalArticlesData = postData;
             self.data.postData = postData;
-            wx.hideLoading();
+            // ********************
+            wx.hideNavigationBarLoading();
+            wx.stopPullDownRefresh();
         })
     },
     // progressData: function (res) {
@@ -55,6 +72,7 @@ Page({
         var articleData = this.data.postData;
         var index = e.currentTarget.dataset.index;
         app.globalData.g_articleData = articleData[index];
+        console.log(app.globalData.g_articleData.like)
         wx.navigateTo({
             url: "post-detail/post-detail?index="+index
         })
@@ -71,5 +89,9 @@ Page({
         this.setData({
             postData: totalArticlesData
         })
+    },
+    onPullDownRefresh:function(){
+        wx.showNavigationBarLoading();
+        this.setPostData();
     }
 })

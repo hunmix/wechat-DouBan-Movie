@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     margin-top: 30rpx;
-    margin-bottom: 30rpx;
+    padding-bottom: 30rpx;
 }
 .isLoading{
     width: 40rpx;

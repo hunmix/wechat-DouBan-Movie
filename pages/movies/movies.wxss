@@ -72,10 +72,10 @@
     width: 60rpx;
     height: 60rpx;
 }
-/* .loading {
+ .loading {
     display: inline-block;
     padding-top: 25rpx;
     transform: translateY(-10rpx);
-    width: 60rpx;
-    height: 60rpx;
-} */
+    width: 40rpx;
+    height: 40rpx;
+} 

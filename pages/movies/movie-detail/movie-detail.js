@@ -6,12 +6,11 @@ Page({
         photos: [
             'https://img3.doubanio.com/view/photo/photo/public/p2518979161.jpg',
             'https://img3.doubanio.com/view/photo/photo/public/p2518910452.jpg'
-        ]
+        ],
+        isLoading:true
     },
     onLoad: function (options) {
-        wx.showLoading({
-            title: '努力加载中...',
-        })
+        wx.showNavigationBarLoading();
         var movieId = options.id;
         var url = app.globalData.g_doubanBase + "v2/movie/subject/" + movieId;
         util.http(url, this.processData);
@@ -54,8 +53,11 @@ Page({
             summary: data.summary,
             photosInfo: photosInfo
         }
-        this.setData(movie)
-        wx.hideLoading();
+        this.setData(movie);
+        this.setData({
+            isLoading:false
+        })
+        wx.hideNavigationBarLoading();
     },
     //预览图片
     onViewImg: function (event) {

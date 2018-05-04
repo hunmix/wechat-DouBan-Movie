@@ -12,6 +12,7 @@ Page({
         isLoading:false
     },
     onLoad: function (options) {
+        wx.showNavigationBarLoading();
         this.setData({
             isLoading: true,
             noMoreData: false

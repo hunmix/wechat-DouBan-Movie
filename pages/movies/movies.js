@@ -16,12 +16,14 @@ Page({
         searchDataSize:0,
         totalMovies:null,
         isSearchEmpty:true,
-        isSearchLoading:false
+        isSearchLoading:false,
+        isInResearching:false
     },
     onLoad: function () {
         // wx.showLoading({
         //     title: '加载中',
         // })
+        wx.showNavigationBarLoading();
         this.setData({
             isLoading: true
         })
@@ -90,9 +92,10 @@ Page({
         }
         this.setData(readyData);
         this.setData({
-            isSearchLoading: false,
-            isLoading: false,
-            containerShow: true,
+            isSearchLoading: false,//搜索加载icon
+            isLoading: false,//movie加载icon
+            containerShow: true,//movie主页面是否展示
+            isInResearching:false//是否按了搜索键
         })
         this.data.searchDataSize += 18;
         wx.hideNavigationBarLoading();
@@ -129,7 +132,8 @@ Page({
     },
     onBindConfirm: function (event) {
         this.setData({
-            isSearchLoading: true
+            isSearchLoading: true,
+            isInResearching: true //是否按了搜索键
         })
         this.data.inSearchPage = true;
         this.data.isSearchEmpty = true;

@@ -2,6 +2,7 @@
 @import "../stars/stars-template.wxss";
 @import "../cast-img/cast-img-template.wxss";
 @import "../photo/photo-template.wxss";
+@import "../../../template/loading-template/loading-template.wxss";
 .container {
     display: flex;
     flex-direction: column;

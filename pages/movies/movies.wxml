@@ -23,10 +23,10 @@
         </view>
     </view>
     <view class="search-panel" wx:if="{{searchPanelShow}}">
-        <template class="temp" is="movieGridTemplate" data="{{...searchResult}}" />
-        <image wx:if="{{isSearchLoading}}" class="loading" src="/images/loading/ali-loading.gif"></image>
+        <template wx:if="{{!isInResearching}}" class="temp" is="movieGridTemplate" data="{{...searchResult}}" />
+        <image wx:if="{{isSearchLoading}}" class="loading" src="/images/loading/loading.gif"></image>
         <text wx:if="{{searchResult.noData && !isSearchLoading}}" class="noMessage">搜索不到更多结果...</text>
     </view>
     <!-- <image wx:if="{{isLoading}}" class="loading" src="/images/loading/ali-loading.gif"></image> -->
-    <template is="loadingTemplate" data="{{isLoading}}"/>
+    <template is="loadingTemplate" data="{{isLoading}}" />
 </view>

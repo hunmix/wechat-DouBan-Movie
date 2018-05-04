@@ -111,10 +111,11 @@ function onLikeEventTap(event, tempIndex) {
     var userId = app.globalData.g_userInfo.id;
     var hasLike = !event.currentTarget.dataset.hasLike;
     var likeStyle = judgeLikeBtnStyle(hasLike);
-    // detail页面没有index，需要传进来
+    var totalPostData = app.globalData.g_totalArticlesData;
+    // post页面传入event参数，post-detail传入event和tempIndex
     if (tempIndex) {
-        var index = 0;
-        // 当前文章信息
+        // 当前页面为post-detail页面
+        // 获取当前文章数据
         var postData = app.globalData.g_articleData;
         var articleId = postData.id;
         postData.hasLike = hasLike;
@@ -124,18 +125,21 @@ function onLikeEventTap(event, tempIndex) {
         } else {
             postData.like -= 1;
         }
+        // 更改全部文章数据，以便于post页面获取数据同步更新赞
+        totalPostData[tempIndex] = postData;
     } else {
         var index = event.currentTarget.dataset.index;
-        var postData = app.globalData.g_totalArticlesData;
-        var articleId = postData[index].id;
-        postData[index].hasLike = hasLike;
-        postData[index].likeStyle = likeStyle;
+        var totalPostData = app.globalData.g_totalArticlesData;
+        var articleId = totalPostData[index].id;
+        totalPostData[index].hasLike = hasLike;
+        totalPostData[index].likeStyle = likeStyle;
         if (hasLike) {
-            postData[index].like += 1;
+            totalPostData[index].like += 1;
         } else {
-            postData[index].like -= 1;
+            totalPostData[index].like -= 1;
         }
-        app.globalData.g_totalArticlesData = postData;
+        app.globalData.g_totalArticlesData = totalPostData;
+        var postData = totalPostData;
     }
     setLikeDataInDatabase(articleId, userId, hasLike);
     //最关键数据
@@ -166,7 +170,7 @@ function sendLikeDataToDatabase(tableId, articleId, userId, hasLike) {
         articleTableSet.remove('hasLikeUsers', userId);
     }
     articleTableSet.update().then(res => {
-        //success
+        // success
     }, err => {
         // err
     })

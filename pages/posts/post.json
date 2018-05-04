@@ -1,3 +1,4 @@
 {
-    "navigationBarTitleText": "文与字"
+    "navigationBarTitleText": "文与字",
+    "enablePullDownRefresh": true
 }

@@ -2,7 +2,9 @@
 <import src="../photo/photo-template.wxml" />
 <import src="../cast-img/cast-img-template.wxml" />
 <import src="../stars/stars-template.wxml" />
+<import src="../../../template/loading-template/loading-template.wxml" />
 <view class="container">
+    <template is="loadingTemplate" data="{{isLoading}}" />
     <image class="head-img" src="{{movieImg}}" mode="aspectFill"></image>
     <view class="head-img-hover">
         <text class="main-title">{{title}}</text>
@@ -60,5 +62,5 @@
             </block>
         </scroll-view>
     </view>
-    
+
 </view>
