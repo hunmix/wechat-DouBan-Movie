@@ -1,6 +1,5 @@
 {
     "pages": [
-        
         "pages/welcome/welcome",
         "pages/posts/post",
         "pages/posts/post-detail/post-detail",
@@ -12,10 +11,6 @@
         "pages/mine/mine-setting/mine-setting",
         "pages/mine/mine-about/mine-about",
         "pages/test/test"
-        
-        
-        
-        
     ],
     "window": {
         "navigationBarBackgroundColor": "#f9dd4f",
@@ -29,7 +24,7 @@
         "list": [
             {
                 "pagePath": "pages/posts/post",
-                "text": "影评",
+                "text": "阅读",
                 "iconPath": "/images/tab/read.png",
                 "selectedIconPath": "/images/tab/read_hl.png"
             },

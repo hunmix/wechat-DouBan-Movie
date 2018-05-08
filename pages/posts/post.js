@@ -1,5 +1,4 @@
 // pages/posts/post.js
-var postsData = require('../../data/posts-data.js');
 var util = require('../../utils/util.js');
 var app = getApp();
 Page({

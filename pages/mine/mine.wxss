@@ -10,7 +10,8 @@
     justify-content: center;
     align-items: center;
     height: 460rpx;
-    background: url("http://i2.bvimg.com/643320/7543093c64e0e1a4.jpg");
+    background: url("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3597298844,33089053&fm=27&gp=0.jpg");
+     /* background-size: cover;  */
 }
 .bg-img{
     width: 100%;
