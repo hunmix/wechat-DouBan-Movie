@@ -155,14 +155,17 @@ Page({
         var query = new wx.BaaS.Query();
         query.contains('articleId', articleId);
         articleCollectionTable.setQuery(query).find().then(res => {
-            if (res.data.objects.length == 0) {
-                self.addArticleCollection(tableId, articleId);
-            } else {
-                var recordId = res.data.objects[0]._id;
-                self.deleteArticleCollection(tableId, recordId);
-            }
+            return res;
         }, err => {
             console.log('err:' + res)
+        })
+        .then(res=>{
+            if (res.data.objects.length == 0) {
+                this.addArticleCollection(tableId, articleId);
+            } else {
+                var recordId = res.data.objects[0]._id;
+                this.deleteArticleCollection(tableId, recordId);
+            }
         })
     },
     addArticleCollection: function (tableId, articleId) {

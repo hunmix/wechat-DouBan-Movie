@@ -27,7 +27,7 @@
 .nick-name{
     margin-top: 20rpx;
     font-size: 40rpx;
-    color: #fff;
+    color: #333;
 }
 .body{
     margin-top: 20rpx;

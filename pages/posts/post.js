@@ -34,19 +34,35 @@ Page({
         var self = this;
         var articleTableId = app.globalData.g_articleTableId;
         var articleTable = new wx.BaaS.TableObject(articleTableId);
-        articleTable.limit(10).offset(0).find().then(res => {
+        articleTable.limit(10).offset(0).find().then(res=>{
+            return res;
+        })
+        .then(res=>{
             var postData = util.progressArticleData(res);
-            self.setData({
+            this.setData({
                 postData: postData,
-                isLoading:false
+                isLoading: false
             });
             app.globalData.g_totalArticlesData = postData;
-            self.data.postData = postData;
+            this.data.postData = postData;
             // ********************
             wx.hideNavigationBarLoading();
             wx.stopPullDownRefresh();
         })
     },
+    // res => {
+    //     var postData = util.progressArticleData(res);
+    //     self.setData({
+    //         postData: postData,
+    //         isLoading: false
+    //     });
+    //     app.globalData.g_totalArticlesData = postData;
+    //     self.data.postData = postData;
+    //     // ********************
+    //     wx.hideNavigationBarLoading();
+    //     wx.stopPullDownRefresh();
+    // }
+    // ---------------------------------
     // progressData: function (res) {
     //     var data = res.data.objects;
     //     var postData = [];

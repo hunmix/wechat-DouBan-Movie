@@ -17,17 +17,20 @@ Page({
         var articleCollectionTableId = app.globalData.g_articleCollectionTableId;
         util.setNavigateTitle(options.title);
         var articleCollectionTable = new wx.BaaS.TableObject(articleCollectionTableId);
-        articleCollectionTable.find().then(res => {
-            var articlesId = self.getArticleId(res);
-            if (!articlesId) {
-                self.setData({
-                    noThing: true,
-                    isLoading: false
-                })
-            } else {
-                self.getArticlesInfo(articlesId);
-            }
+        articleCollectionTable.find().then(res=>{
+            this.processArticleInfo(res);
         })
+    },
+    processArticleInfo:function(res){
+        var articlesId = this.getArticleId(res);
+        if (!articlesId) {
+            this.setData({
+                noThing: true,
+                isLoading: false
+            })
+        } else {
+            this.getArticlesInfo(articlesId);
+        }
     },
     getArticleId: function (res) {
         var objArray = res.data.objects;
