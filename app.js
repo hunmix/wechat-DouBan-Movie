@@ -16,7 +16,7 @@ App({
     },
     onLaunch() {
         // 引入 SDK
-        require('./utils/sdk-v1.3.0');
+        require('./utils/sdk-v1.4.0');
         // 初始化 SDK
         let clientID = '8c1c9054efce81bf3893';
         wx.BaaS.init(clientID);

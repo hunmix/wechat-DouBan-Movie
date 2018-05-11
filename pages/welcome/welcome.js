@@ -1,10 +1,22 @@
 var app = getApp();
 Page({
     data: {
-        // userInfo: {}
+        showPage:false,
         hasInfo: false
     },
     onLoad: function () {
+        wx.showLoading({
+            title: '正在加载...',
+        })
+        // var userInfo = wx.BaaS.storage.get('userinfo');
+        // console.log(userInfo)
+        // if (userInfo){
+        //     this.setData({
+        //         hasInfo:true,
+        //         userInfo: userInfo
+        //     })
+        //     app.globalData.g_userInfo = userInfo;
+        // }
         this.getInfo();
     },
     onTap: function () {
@@ -29,21 +41,39 @@ Page({
     getInfo: function () {
         var self = this;
         var userInfo = wx.BaaS.storage.get('userinfo');
-        if (!userInfo) {
-            wx.BaaS.login().then(res => {
-                wx.showLoading({
-                    title: '加载中...',
-                })
-                var userInfo = self.progressUserInfo(res);
-                self.setData(userInfo);
-                wx.hideLoading();
-            }, res => {
-                self.showModal();
+        if (userInfo) {
+            app.globalData.g_userInfo = userInfo;
+            wx.switchTab({
+                url: "../posts/post"
             })
         }else{
-            var userInfo = this.progressUserInfo(userInfo)
-            this.setData(userInfo)
+            wx.hideLoading();
+            this.setData({
+                showPage: true
+            })
         }
+    },
+    userInfoHandler(data) {
+        this.setData({
+            inLogin:true
+        })
+        wx.BaaS.handleUserInfo(data).then(res => {
+            wx.showLoading({
+                title: '加载中...',
+            })
+            var userInfo = this.progressUserInfo(res);
+            this.setData({
+                hasInfo: true,
+                userInfo: userInfo,
+                showPage:true,
+                inLogin:false
+            });
+            wx.hideLoading();
+        }, res => {
+            this.setData({
+                inLogin: false
+            });
+        })
     },
 // getInfo: function () {
 //     var self = this;
@@ -70,32 +100,33 @@ Page({
 //         }
 //     })  
 // },
-showModal: function () {
-        var self = this;
-        wx.showModal({
-            title: '获取授权',
-            content: '请开始授权使用公开信息',
-            success: function (res) {
-                if (res.confirm) {
-                    self.openSetting();
-                } else if (res.cancel) {
-                    self.showModal()
-                }
-            }
-        })
-    },
-    openSetting: function () {
-        var self = this;
-        wx.openSetting({
-            success: (res) => {
-                if (res.authSetting["scope.userInfo"] == true) {
-                    self.getInfo();
-                } else {
-                    self.showModal();
-                }
-            }
-        })
-    },
+// *********************************************
+// showModal: function () {
+//         var self = this;
+//         wx.showModal({
+//             title: '获取授权',
+//             content: '请开始授权使用公开信息',
+//             success: function (res) {
+//                 if (res.confirm) {
+//                     self.openSetting();
+//                 } else if (res.cancel) {
+//                     self.showModal()
+//                 }
+//             }
+//         })
+//     },
+//     openSetting: function () {
+//         var self = this;
+//         wx.openSetting({
+//             success: (res) => {
+//                 if (res.authSetting["scope.userInfo"] == true) {
+//                     self.getInfo();
+//                 } else {
+//                     self.showModal();
+//                 }
+//             }
+//         })
+//     },
     progressUserInfo:function(res){
         var userInfo = {
             nickName: res.nickName,

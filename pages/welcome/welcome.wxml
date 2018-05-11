@@ -1,7 +1,9 @@
-<view wx:if="{{hasInfo}}" class="container">
-  <image class="user-avatar" src="{{avatarUrl}}"></image>
-  <text class="user-name"><text>Hello</text>，{{nickName}}</text>
-  <view class="moto-container" bindtap="onTap">
+<view wx:if="{{showPage}}" class="container">
+  <image class="user-avatar" src="{{hasInfo?userInfo.avatarUrl:'/images/icon/not-login.png'}}"></image>
+  <text wx:if="{{hasInfo}}" class="user-name"><text>Hello</text>，{{userInfo.nickName}}</text>
+  <text wx:else class="user-name"><text>请先登录</text></text>
+  <view wx:if="{{hasInfo}}" class="moto-container" bindtap="onTap">
     <text class="moto">开始电影之旅</text>
   </view>
+  <button wx:else class="login-btn" open-type="getUserInfo" bindgetuserinfo="userInfoHandler" type="primary" loading="{{inLogin}}"><text class="login-font">登\t\t录</text></button>
 </view>
