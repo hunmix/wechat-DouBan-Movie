@@ -81,7 +81,7 @@ Page({
     onCollectionTap: function (event) {
         var articleId = event.currentTarget.dataset.articleId;
         wx.redirectTo({
-            url: "/pages/posts/post-detail/post-detail?articleId=" + articleId
+            url: "/pages/posts/post-detail/post-detail?from=collection&articleId=" + articleId
         })
     },
     onTouchStart: function (event) {

@@ -13,6 +13,8 @@ Page({
         option:null
     },
     onLoad: function (option) {
+        //从collection跳转时
+        this.data.tapFrom = option.from;
         // wx.showLoading({
         //     title: '加载中...',
         // })
@@ -358,6 +360,15 @@ Page({
     onPullDownRefresh:function(option){
         option = this.data.option;
         this.setPostDetailData(option);
+    },
+    onUnload: function () {
+        console.log('2')
+        var tapFrom = this.data.tapFrom;
+        if (tapFrom) {
+            wx.navigateTo({
+                url: '/pages/mine/mine-collection/mine-collection?title=我的收藏'
+            })
+        }
     }
     // onShareAppMessage:function(res){
     //     return{
