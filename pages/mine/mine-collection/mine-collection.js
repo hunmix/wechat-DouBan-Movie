@@ -84,6 +84,7 @@ Page({
             url: "/pages/posts/post-detail/post-detail?from=collection&articleId=" + articleId
         })
     },
+    //触摸开始
     onTouchStart: function (event) {
         var prevIndex = this.data.prevIndex;
         var touchIndex = event.currentTarget.dataset.index;
@@ -95,6 +96,7 @@ Page({
         this.data.startX = event.changedTouches[0].pageX;
         this.data.canMove = true;
     },
+    //触摸移动
     onTouchMove: function (event) {
         var canMove = this.data.canMove;
         if (canMove) {
@@ -109,6 +111,7 @@ Page({
             return;
         }
     },
+    //触摸结束
     onTouchEnd: function () {
         var index = this.data.touchIndex;
         var movedLen = this.data.movedLen;
@@ -121,6 +124,7 @@ Page({
         this.data.canMove = false;
         this.data.prevIndex = index;
     },
+    //渲染删除按钮
     renderDeleteBtnPos: function (index, movedLen){
         //第一次调用时直接返回
         if(index == null){

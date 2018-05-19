@@ -2,7 +2,9 @@
 <import src="/pages/movies/movie-grid/movie-grid-template.wxml" />
 <import src="../../../template/loading-template/loading-template.wxml" />
 <view class="container">
-    <template is="loadingTemplate" data="{{isLoading}}" />
     <template is="movieGridTemplate" data="{{movies}}" />
+    <view class="loading-container">
+        <template is="loadingTemplate" data="{{isLoading}}" />
+    </view>
     <text wx:if="{{noMoreData}}" class="no-more">没有更多...</text>
 </view>

@@ -28,13 +28,13 @@ Page({
         this.data.index = option.index;
         //读取post.js存储在app.js中的当前文章数据
         var articleData = app.globalData.g_articleData;
-        // post页面跳转
-        if (articleId = option.articleId) {
+        if (option.articleId) {
             // myCollection页面跳转
             articleId = option.articleId;
             // 异步获取articleId，所以将setCommnetsData
             this.getArticleData(articleId);
         } else {
+            // post页面跳转
             var articleId = articleData.id;
             this.setCommnetsData(articleId, articleData);
         }
@@ -108,9 +108,8 @@ Page({
             }
             infoArr.push(info);
         }
-        this.sendCommentsNumInDatabase(infoArr.length, articleId);
         //上传评论数到数据库
-        // this.sendCommentsNumInDatabase(data.length, articleId);
+        this.sendCommentsNumInDatabase(infoArr.length, articleId);
         return infoArr;
     },
     // 渲染详情页
@@ -146,15 +145,18 @@ Page({
             console.log('err:' + res)
         })
     },
+    //收藏功能
     onCollectedTap: function (event) {
         var articleId = event.currentTarget.dataset.articleId;
         this.upDateCollected(articleId);
     },
+    //更新收藏图标
     upDateCollected: function (articleId) {
         var self = this;
         var tableId = app.globalData.g_articleCollectionTableId;
         var articleCollectionTable = new wx.BaaS.TableObject(tableId);
         var query = new wx.BaaS.Query();
+        //使用id查询是否收藏影评
         query.contains('articleId', articleId);
         articleCollectionTable.setQuery(query).find().then(res => {
             return res;
@@ -162,14 +164,17 @@ Page({
             console.log('err:' + res)
         })
         .then(res=>{
+            //如果没收藏影评，则收藏
             if (res.data.objects.length == 0) {
                 this.addArticleCollection(tableId, articleId);
             } else {
+                //如果收藏了影评，则取消收藏
                 var recordId = res.data.objects[0]._id;
                 this.deleteArticleCollection(tableId, recordId);
             }
         })
     },
+    //收藏影评
     addArticleCollection: function (tableId, articleId) {
         var self = this
         var userId = app.globalData.g_userInfo.id;
@@ -189,6 +194,7 @@ Page({
             duration: 800
         })
     },
+    //取消收藏影评
     deleteArticleCollection: function (tableId, recordId) {
         this.setData({
             collected: false
@@ -310,7 +316,6 @@ Page({
             })
             wx.hideLoading();
             //更新post页面的评论数量
-
         })
     },
     // 删除按钮

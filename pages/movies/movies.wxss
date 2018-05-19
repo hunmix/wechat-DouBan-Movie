@@ -63,6 +63,7 @@
 
 .noMessage {
     margin-top: 20rpx;
+    padding-bottom: 20rpx;
     color: #666;
 }
 .isSearchLoading{
@@ -78,4 +79,5 @@
     transform: translateY(-10rpx);
     width: 40rpx;
     height: 40rpx;
+    margin-top: 10rpx;
 } 

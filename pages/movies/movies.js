@@ -20,9 +20,6 @@ Page({
         isInResearching:false
     },
     onLoad: function () {
-        // wx.showLoading({
-        //     title: '加载中',
-        // })
         wx.showNavigationBarLoading();
         this.setData({
             isLoading: true
@@ -42,6 +39,7 @@ Page({
             header: {
                 "Content-Type": "json"
             },
+            //请求成功回调函数
             success: function (res) {
                 self.progressData(res.data, key, category);
             },
@@ -50,6 +48,7 @@ Page({
             }
         })
     },
+    //电影数据处理
     progressData: function (moviesData, key, category) {
         var movies = [];
         var totalMovies = this.data.totalMovies;
@@ -69,11 +68,13 @@ Page({
             }
             movies.push(temp);
         }
+        //判断是否请求到电影数据
         if(movies.length === 0){
             this.data.noData = true;
         }else{
             this.data.noData = false;
         }
+        //是否处于搜索状态
         if (this.data.isSearchEmpty && this.data.inSearchPage) {
             totalMovies = movies;
             this.data.isSearchEmpty = false;
@@ -90,6 +91,7 @@ Page({
             noData: this.data.noData,
             searchDataSize: searchDataSize
         }
+        //渲染数据
         this.setData(readyData);
         this.setData({
             isSearchLoading: false,//搜索加载icon
@@ -114,12 +116,6 @@ Page({
             inSearchPage: true
         })
     },
-    // onBindBlur: function () {
-    //     this.setData({
-    //         containerShow: true,
-    //         searchPanel: false
-    //     })
-    // },
     onCancelImgTap: function () {
         this.setData({
             containerShow: true,
@@ -155,7 +151,6 @@ Page({
             isSearchLoading: true,
             noData: false
         })
-        console.log("onReachBottom")
         var nextUrl = this.data.searchUrl + "&start="+this.data.searchDataSize+"&count=18";
         this.getMoviesData(nextUrl, "searchResult", "");
         wx.showNavigationBarLoading();

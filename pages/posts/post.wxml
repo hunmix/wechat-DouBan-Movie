@@ -1,17 +1,8 @@
+<!--引入影评模版  -->
 <import src="post-item/post-item-template.wxml" />
+<!--引入加载模版  -->
 <import src="../../template/loading-template/loading-template.wxml" />
 <view class="container">
-    <!-- <swiper catchtap="onSwiperTap" indicator-dots="true" indicator-dots="true" autoplay="true" circular="true" interval="5000">
-        <swiper-item>
-            <image src="/images/armsImg/mianmian.jpg" data-post-id="1"></image>
-        </swiper-item>
-        <swiper-item>
-            <image src="/images/armsImg/ninja.jpg" data-post-id="0"></image>
-        </swiper-item>
-        <swiper-item>
-            <image src="/images/armsImg/dna.jpg" data-post-id="2"></image>
-        </swiper-item>
-    </swiper> -->
     <template is="loadingTemplate" data="{{isLoading}}"/>
     <block wx:for="{{postData}}" wx:for-item="item">
         <view catchtap="onPostTap" data-id="{{item.id}}" data-index="{{index}}">

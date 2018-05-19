@@ -8,9 +8,7 @@
         "pages/movies/movie-detail/movie-detail",
         "pages/mine/mine",
         "pages/mine/mine-collection/mine-collection",
-        "pages/mine/mine-setting/mine-setting",
-        "pages/mine/mine-about/mine-about",
-        "pages/test/test"
+        "pages/mine/mine-about/mine-about"
     ],
     "window": {
         "navigationBarBackgroundColor": "#f9dd4f",
