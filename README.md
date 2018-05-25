@@ -16,12 +16,14 @@
 ----
 
 #####图片：
-![影评页面](http://hunmix.cc/wxMoviePic/article.jpg)
-![影评详情](http://hunmix.cc/wxMoviePic/article-detail.jpg)
+- 影评页面：
+![影评页面](http://hunmix.cc/wxMoviePic/article.png)
 
-![电影页面](http://hunmix.cc/wxMoviePic/movie1.png)
-![电影详情](http://hunmix.cc/wxMoviePic/movie-detail.png)
-![搜索页面](http://hunmix.cc/wxMoviePic/search.png)
-![我的页面](http://hunmix.cc/wxMoviePic/mine.png)
+- 电影页面：
+![电影页面](http://hunmix.cc/wxMoviePic/movie.png)
+
+- 我的页面
+![我的页面](http://hunmix.cc/wxMoviePic/mine1.png)
+
 ####小程序二维码：
 ![二维码](http://hunmix.cc/wxMoviePic/QRcode.jpg)
