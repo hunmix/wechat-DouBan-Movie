@@ -31,8 +31,7 @@ page {
 
 .user-name {
     font-size: 35rpx;
-    font-weight: bold;
-    margin-top: 40rpx;
+    margin-top: 50rpx;
     color: #000;
 }
 
@@ -55,8 +54,7 @@ page {
   border: none;
 }
 .moto {
-    font-size: 30rpx;
-    font-weight: bold;
+    font-size: 34rpx;
     line-height: 80rpx;
 }
 

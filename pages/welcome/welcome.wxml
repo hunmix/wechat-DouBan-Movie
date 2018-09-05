@@ -1,7 +1,7 @@
 <view wx:if="{{showPage}}" class="container">
   <view class="ava-box">
     <open-data class="user-avatar" type="userAvatarUrl"></open-data>
-    <view class="user-name">hello, <open-data type="userNickName"></open-data></view>
+    <view class="user-name">Hello, <open-data type="userNickName"></open-data></view>
   </view> 
   <!-- <image class="user-avatar" src="{{hasInfo?userInfo.avatarUrl:'/images/icon/not-login.png'}}"></image>
   <text wx:if="{{hasInfo}}" class="user-name"><text>Hello</text>，{{userInfo.nickName}}</text>
