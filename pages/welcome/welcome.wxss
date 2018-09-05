@@ -1,28 +1,39 @@
 page {
-    height: 100%;
-    background: #b3d4db;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #fff;
 }
 
 .container {
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    transform: translateY(-50rpx);
+    height: 70vh;
+}
+.ava-box{
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
-
 .user-avatar {
     font-size: 35rpx;
     width: 150rpx;
     height: 150rpx;
     border-radius: 50%;
-    margin-top: 250rpx;
     background: #fff;
+    overflow: hidden;
 }
 
 .user-name {
     font-size: 35rpx;
     font-weight: bold;
-    margin-top: 20rpx;
-    color: #fff;
+    margin-top: 40rpx;
+    color: #000;
 }
 
 .user-name text {
@@ -30,17 +41,21 @@ page {
 }
 
 .moto-container {
-    width: 200rpx;
-    height: 80rpx;
+    width: 400rpx;
+    height: 120rpx;
+    line-height: 120rpx;
     text-align: center;
-    border: 1px solid #eee;
-    color: #eee;
-    border-radius: 5px;
+    color: #000;
     margin-top: 100rpx;
+    border-radius: 60px;
+    background: #F9DD4E;
+    box-shadow: none;
 }
-
+.moto-container::after{
+  border: none;
+}
 .moto {
-    font-size: 25rpx;
+    font-size: 30rpx;
     font-weight: bold;
     line-height: 80rpx;
 }
@@ -53,8 +68,8 @@ page {
     height: 80rpx;
     color: #000;
     margin-top: 100rpx;
-    padding-left: 10rpx;
-    padding-right: 10rpx;
+    /* padding-left: 10rpx;
+    padding-right: 10rpx; */
     text-align: center;
 }
 
